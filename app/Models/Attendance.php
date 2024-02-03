@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Attendance extends Model
 {
-    protected $fillable = ['user_id', 'date', 'time_in', 'time_out', 'location', 'status', 'image_url'];
+    protected $fillable = ['check_in', 'check_out', 'status', 'latitude', 'longitude', 'image_name'];
 
     public function user()
     {
