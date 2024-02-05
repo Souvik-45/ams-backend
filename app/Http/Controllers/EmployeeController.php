@@ -78,10 +78,15 @@ class EmployeeController extends Controller
         $validator = Validator::make($request->all(), [
             'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
-
+        try{
         if ($validator->fails()) {
             return response()->json(['error' => $validator->errors()], 422);
         }
+    }
+    catch (\Exception $e) {
+        dd($e->getMessage());
+        return response()->json(['error' => 'Something went wrong'], 400);
+    }
 
         $user = Auth::user();
         $lastAttendance = $user->attendance()->latest()->first();
