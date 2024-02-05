@@ -76,7 +76,7 @@ class EmployeeController extends Controller
     public function updateAttendance(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'image' => 'required',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif',
         ]);
         if ($validator->fails()) {
             return response()->json(['error' => $validator->errors()], 422);
